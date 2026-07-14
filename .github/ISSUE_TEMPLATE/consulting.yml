@@ -1,0 +1,73 @@
+name: AI 定制开发咨询
+description: 提交您的 AI 落地需求，24 小时内回复
+title: "AI 咨询："
+labels: ["咨询"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🚀 AI 定制开发需求咨询
+
+        感谢您的关注！请填写以下信息，我会在 24 小时内回复您。
+        也可以直接发邮件或添加微信沟通。
+
+  - type: input
+    id: company
+    attributes:
+      label: 公司/团队名称
+      placeholder: "例如：XX 科技有限公司"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: service_type
+    attributes:
+      label: 您感兴趣的服务
+      options:
+        - 🤖 AI 智能客服 / 知识库机器人
+        - ⚡ AI Agent 自动化流程
+        - 🔧 AI 内部工具定制
+        - 🤔 不确定，想聊聊看
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 您想用 AI 解决什么问题？
+      description: 越具体越好。例如："我们客服团队 5 个人，每天处理 200 条重复咨询，想用 AI 降低成本"
+      placeholder: 请描述您的业务场景和痛点...
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: 目前这个问题是怎么处理的？
+      placeholder: "例如：人工客服、Excel 报表、邮件手动分类..."
+    validations:
+      required: false
+
+  - type: input
+    id: budget
+    attributes:
+      label: 大概预算范围
+      placeholder: "例如：3-5 万"
+    validations:
+      required: false
+
+  - type: input
+    id: timeline
+    attributes:
+      label: 期望时间
+      placeholder: "例如：1 个月内"
+    validations:
+      required: false
+
+  - type: input
+    id: contact
+    attributes:
+      label: 联系方式（微信/邮箱/手机）
+      description: 不会公开显示
+    validations:
+      required: false

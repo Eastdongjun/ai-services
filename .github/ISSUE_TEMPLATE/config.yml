@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 免费咨询
+    url: https://github.com/Eastdongjun/ai-services/issues/new?template=consulting.yml
+    about: 提交您的 AI 落地需求，24 小时内回复
+  - name: 📂 GitHub 作品集
+    url: https://github.com/Eastdongjun
+    about: 查看我的开源项目
