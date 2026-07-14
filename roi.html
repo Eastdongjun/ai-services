@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 投资回报计算器</title>
+<style>
+  :root { --bg: #f8fafc; --surface: #fff; --primary: #001629; --accent: #2563eb; --green: #059669; --text: #1e293b; --text-secondary: #64748b; --border: #e2e8f0; --radius: 10px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); padding: 40px 24px; }
+  .container { max-width: 720px; margin: 0 auto; }
+  h1 { text-align: center; color: var(--primary); margin-bottom: 8px; }
+  .subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 32px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 16px; }
+  .card h3 { font-size: 16px; color: var(--primary); margin-bottom: 16px; }
+
+  .slider-group { margin-bottom: 20px; }
+  .slider-group label { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 6px; }
+  .slider-group label span:last-child { font-weight: 600; color: var(--accent); }
+  input[type="range"] { width: 100%; accent-color: var(--accent); }
+
+  .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 24px; }
+  .result-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; }
+  .result-card .label { font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; }
+  .result-card .value { font-size: 28px; font-weight: 700; }
+  .result-card .value.red { color: #ef4444; }
+  .result-card .value.green { color: var(--green); }
+  .result-card .value.blue { color: var(--accent); }
+
+  .highlight-box { background: linear-gradient(135deg, #ecfdf5, #eff6ff); border: 2px solid var(--green); border-radius: var(--radius); padding: 28px; text-align: center; margin-top: 16px; }
+  .highlight-box .big-number { font-size: 42px; font-weight: 800; color: var(--green); }
+  .highlight-box .caption { font-size: 15px; color: var(--text-secondary); margin-top: 4px; }
+
+  .cta-btn { display: block; width: 100%; max-width: 400px; margin: 24px auto 0; padding: 16px; background: var(--accent); color: #fff; text-align: center; border-radius: 50px; text-decoration: none; font-size: 17px; font-weight: 600; }
+  .cta-btn:hover { background: #1d4ed8; }
+
+  @media (max-width: 600px) { .result-grid { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📊 AI 投资回报计算器</h1>
+  <p class="subtitle">拖动滑块，看看 AI 能帮你省多少钱</p>
+
+  <div class="card">
+    <h3>你的业务现状</h3>
+
+    <div class="slider-group">
+      <label>客服/重复性工作员工数 <span id="val-staff">5 人</span></label>
+      <input type="range" min="1" max="30" value="5" step="1" id="staff">
+    </div>
+
+    <div class="slider-group">
+      <label>人均月薪（含五险一金） <span id="val-salary">¥8,000</span></label>
+      <input type="range" min="4000" max="25000" value="8000" step="500" id="salary">
+    </div>
+
+    <div class="slider-group">
+      <label>AI 可以替代的重复工作占比 <span id="val-auto">60%</span></label>
+      <input type="range" min="20" max="90" value="60" step="5" id="auto">
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="caption">💡 AI 每年帮你省下</div>
+    <div class="big-number" id="saving-year">¥288,000</div>
+    <div class="caption">对比 AI 系统一次性投入 <strong>¥30,000 - 80,000</strong></div>
+  </div>
+
+  <div class="result-grid">
+    <div class="result-card">
+      <div class="label">现在年人力成本</div>
+      <div class="value red" id="cost-now">¥480,000</div>
+    </div>
+    <div class="result-card">
+      <div class="label">AI 后年人力成本</div>
+      <div class="value blue" id="cost-after">¥192,000</div>
+    </div>
+    <div class="result-card">
+      <div class="label">回本周期</div>
+      <div class="value green" id="payback">~3 个月</div>
+    </div>
+    <div class="result-card">
+      <div class="label">3 年累计节省</div>
+      <div class="value green" id="saving-3yr">¥864,000</div>
+    </div>
+  </div>
+
+  <a href="mailto:pan_donglai@outlook.com?subject=AI投资回报咨询" class="cta-btn">获取详细方案 →</a>
+</div>
+
+<script>
+const sliders = ['staff', 'salary', 'auto'];
+sliders.forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener('input', () => {
+    document.getElementById('val-' + id).textContent =
+      id === 'salary' ? '¥' + parseInt(el.value).toLocaleString() :
+      id === 'auto' ? el.value + '%' :
+      el.value + ' 人';
+    update();
+  });
+});
+
+function update() {
+  const staff = parseInt(document.getElementById('staff').value);
+  const salary = parseInt(document.getElementById('salary').value);
+  const auto = parseInt(document.getElementById('auto').value) / 100;
+
+  const costNow = staff * salary * 12;
+  const costAfter = staff * (1 - auto) * salary * 12;
+  const savingYear = costNow - costAfter;
+  const aiCost = 50000; // midpoint
+  const paybackMonths = Math.round(aiCost / (savingYear / 12));
+
+  document.getElementById('cost-now').textContent = '¥' + costNow.toLocaleString();
+  document.getElementById('cost-after').textContent = '¥' + costAfter.toLocaleString();
+  document.getElementById('saving-year').textContent = '¥' + savingYear.toLocaleString();
+  document.getElementById('saving-3yr').textContent = '¥' + (savingYear * 3).toLocaleString();
+  document.getElementById('payback').textContent = '~' + paybackMonths + ' 个月';
+}
+
+update();
+</script>
+</body>
+</html>
