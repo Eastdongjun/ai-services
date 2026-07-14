@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI 智能科技 博客</title>
+    <link>https://eastdongjun.github.io/ai-services/</link>
+    <description>企业级 AI 定制开发 · 从真实项目中沉淀的经验、教程和思考</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 15 Jul 2026 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://eastdongjun.github.io/ai-services/rss.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>独立开发者的 AI 外包之路：一个人如何月入 5 万</title>
+      <link>https://eastdongjun.github.io/ai-services/blog/indie-ai-outsourcing.html</link>
+      <guid>https://eastdongjun.github.io/ai-services/blog/indie-ai-outsourcing.html</guid>
+      <pubDate>Fri, 10 Jul 2026 00:00:00 +0800</pubDate>
+      <description>2026 年，一个人 + AI，能不能靠接外包过日子？三个月实盘记录：从零到月入 6.8 万的真实经历，以及你需要的四样东西。</description>
+    </item>
+
+    <item>
+      <title>从 0 到 1 搭建企业 AI 知识库，手把手教程</title>
+      <link>https://eastdongjun.github.io/ai-services/blog/rag-tutorial.html</link>
+      <guid>https://eastdongjun.github.io/ai-services/blog/rag-tutorial.html</guid>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0800</pubDate>
+      <description>不需要懂算法，不需要会深度学习。四个步骤带你从零搭建一个企业 AI 知识库，附真实成本明细和常见坑。</description>
+    </item>
+
+    <item>
+      <title>我用 AI 帮企业做客服，客户每年省了 20 万人工成本</title>
+      <link>https://eastdongjun.github.io/ai-services/blog/ai-customer-service.html</link>
+      <guid>https://eastdongjun.github.io/ai-services/blog/ai-customer-service.html</guid>
+      <pubDate>Sat, 20 Jun 2026 00:00:00 +0800</pubDate>
+      <description>一个 SaaS 公司，8 人客服团队，年成本 80 万。三周 AI 改造后，团队减半，响应速度从 15 分钟降到 30 秒以内。</description>
+    </item>
+
+  </channel>
+</rss>
